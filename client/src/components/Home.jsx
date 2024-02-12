@@ -128,8 +128,7 @@ setSelect(filtered)
             <h2>{e.title}</h2>
           </div>
           <img src={e.image} alt='Story Image' />
-          <p>Likes: {e.likes}</p>
-          <button>like</button>
+       
         </div>
       ))
     )
@@ -140,8 +139,7 @@ setSelect(filtered)
           <h2>{e.title}</h2>
         </div>
         <img src={e.image} alt='Story Image' />
-        <p>Likes: {e.likes}</p>
-        <button>like</button>
+     
       </div>
     ))
   ) : (
@@ -151,8 +149,7 @@ setSelect(filtered)
           <h2>{e.title}</h2>
         </div>
         <img src={e.image} alt='Story Image' />
-        <p>Likes: {e.likes}</p>
-        <button>like</button>
+       
       </div>
     ))
   )}

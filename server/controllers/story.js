@@ -76,5 +76,16 @@ const update =(req,res)=>{
     }
   })
 }
+const getstorybyuser=(req,res)=>{
+  db.query(`SELECT * FROM stories WHERE users_id= ${req.params.id}`,(err,result)=>{
 
-module.exports ={getAll,add,del,update,getcategory,getonestory}
+      if(err){
+        res.send(err)
+      }
+      else{
+        res.json(result)
+      }
+  })
+}
+
+module.exports ={getAll,add,del,update,getcategory,getonestory,getstorybyuser}

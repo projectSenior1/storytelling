@@ -9,6 +9,7 @@ import "./App.css";
 import Category from "./components/Category.jsx";
 import Cookies from "js-cookie";
 import Nav from "./components/Nav.jsx";
+import UsersStories from "./components/UsersStories.jsx";
 
 
 
@@ -24,7 +25,8 @@ console.log("this is id",id)
     <div className="App">
       <BrowserRouter>
         <Routes>
-
+        <Route path="/UserStories" element={<UsersStories  />} /> 
+        {/* userstory={userstory} */}
           <Route path="/addstory" element={<Addstory id={id}/>} /> 
           <Route path="/details/:title" element={<Storydetails id={id}/>  }/>
 

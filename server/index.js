@@ -4,6 +4,8 @@ const db = require("./database/mysql");
 const Routes = require("./routes/story");
 const Routes1=require("./routes/comments")
 const Routes2 =require("./routes/category")
+const Routes3=require("./routes/users")
+
 const auth = require("./routes/users"); 
 
 
@@ -22,7 +24,7 @@ app.use("/story",Routes);
 app.use("/auth",auth);
 app.use("/comments",Routes1)
 app.use("/category",Routes2)
-
+app.use("/users",Routes3)
 
 
 app.listen(port, () => {

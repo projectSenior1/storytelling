@@ -8,7 +8,11 @@ const getAllusers = ((req,res)=>{
         err? res.send(err) : res.json(result)
     })
 })
-
+const getoneuser= ((req,res)=>{
+    db.query(`SELECT * FROM users WHERE id=?`,[req.params.id],(err,result)=>{
+        err? res.send(err) : res.json(result)
+    })
+})
 
 const add =((req,res)=>{
     const sql= `insert into users set ?`
@@ -65,4 +69,4 @@ const login = async (req, res) => {
 
 
 
-module.exports = {getAllusers , add , register , login}
+module.exports = {getAllusers , add , register , login,getoneuser}

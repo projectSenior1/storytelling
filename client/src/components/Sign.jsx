@@ -23,7 +23,7 @@ function Sign() {
 
   return (
     <div className='signn'>
-      <h1 className='titleee'>Sign up</h1>
+      <h1 className='titleee'>Sign up here</h1>
 
       {/* Name Input */}
       <div className='input-container'>

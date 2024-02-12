@@ -104,7 +104,7 @@ console.log(One.id)
                         <div className="dropdown">
                             <div className="dots">...</div>
                             <div className="dropdown-content">
-                              <div > <Link to="#">Edit</Link></div> 
+                              
                                 <a onClick={() => {deleting(One.id) }} href="#">Delete</a>
                             </div>
                         </div>
@@ -130,7 +130,7 @@ console.log(One.id)
                             <div className="dropdown">
                                 <div className="dots">...</div>
                                 <div className="dropdown-content">
-                                    <a href="#">Edit</a>
+                                    
                                     <a onClick={() => { deletecomment(el.id) }} href="#">Delete</a>
                                 </div>
                             </div>

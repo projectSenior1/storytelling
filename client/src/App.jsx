@@ -14,7 +14,7 @@ import Nav from "./components/Nav.jsx";
 
 function App() {
 const id=Cookies.get("id")
-
+console.log(id);
   useEffect(()=>{
 
   },[])

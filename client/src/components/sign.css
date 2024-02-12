@@ -7,14 +7,12 @@ body {
 
 .signn {
     max-width: 500px;
-    margin: 0 auto;
+    margin: 6rem auto; /* Adjusted for better centering */
     padding: 20px;
     border: 1px solid #4442c7;
     border-radius: 5px;
     background-color: #ffffff;
-    position: absolute;
-    top: 6rem;
-    left: 42rem;
+    position: relative; /* Changed from absolute to relative */
 }
 
 .titleee {

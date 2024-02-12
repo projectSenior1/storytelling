@@ -116,44 +116,48 @@ setSelect(filtered)
         </ul>
       </nav>
 
-      <div>
-        {select.length?select[0]===1?[].map((e) => (
-          <div key={e.id}>
-            <div className="details" onClick={() => getone(e.title)}><h2>{e.title}</h2></div>
-        
-            
-            <img src={e.image} alt="Story Image" />
-            <p>Likes: {e.likes}</p>
-           <button>like</button>
+  
+<div className='container-flex'>
+  {select.length ? (
+    select[0] === 1 ? (
+      <div>No posts found</div>
+    ) : (
+      select.map((e) => (
+        <div className='conn' key={e.id}>
+          <div className='details' onClick={() => getone(e.title)}>
+            <h2>{e.title}</h2>
           </div>
-        )):select.map((e) => (
-          <div key={e.id}>
-            <div className="details" onClick={() => getone(e.title)}><h2>{e.title}</h2></div>
-        
-            
-            <img src={e.image} alt="Story Image" />
-            <p>Likes: {e.likes}</p>
-           <button>like</button>
-          </div>
-        )):filter.length?filter.map((e) => (
-          <div key={e.id}>
-            <div className="details" onClick={() => getone(e.title)}><h2>{e.title}</h2></div>
-            <img src={e.image} alt="Story Image" />
-            <p>Likes: {e.likes}</p>
-           <button>like</button>
-          </div>
-        )):data.map((e) => (
-          <div className='conn' key={e.id}>
-            <div className="details" onClick={() => getone(e.title)}><h2>{e.title}</h2></div>
-        
-            
-            <img src={e.image} alt="Story Image" />
-            <p>Likes: {e.likes}</p>
-           <button>like</button>
-          </div>
-        ))}
-       
+          <img src={e.image} alt='Story Image' />
+          <p>Likes: {e.likes}</p>
+          <button>like</button>
+        </div>
+      ))
+    )
+  ) : filter.length ? (
+    filter.map((e) => (
+      <div className='conn' key={e.id}>
+        <div className='details' onClick={() => getone(e.title)}>
+          <h2>{e.title}</h2>
+        </div>
+        <img src={e.image} alt='Story Image' />
+        <p>Likes: {e.likes}</p>
+        <button>like</button>
       </div>
+    ))
+  ) : (
+    data.map((e) => (
+      <div className='conn' key={e.id}>
+        <div className='details' onClick={() => getone(e.title)}>
+          <h2>{e.title}</h2>
+        </div>
+        <img src={e.image} alt='Story Image' />
+        <p>Likes: {e.likes}</p>
+        <button>like</button>
+      </div>
+    ))
+  )}
+</div>
+
 
       <footer className="footer"> 
         <div className="about-us"> 

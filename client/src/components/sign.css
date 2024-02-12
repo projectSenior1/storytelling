@@ -6,7 +6,7 @@ body {
 }
 
 .signn {
-    max-width: 500px; /* Adjusted max-width */
+    max-width: 500px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #4442c7;
@@ -16,7 +16,7 @@ body {
     top: 6rem;
     left: 42rem;
 }
-  
+
 .titleee {
     font-size: 25px;
     font-weight: bold;
@@ -27,10 +27,10 @@ body {
 .input-container {
     font-family: 'Segoe UI', sans-serif;
     margin: 1em 0 1em 0;
-    max-width: 240px; /* Adjusted max-width */
+    max-width: 240px; 
     position: relative;
 }
-  
+
 .input-container input {
     font-size: 100%;
     padding: 0.8em;
@@ -40,7 +40,7 @@ body {
     border-radius: 20px;
     width: 100%;
 }
-  
+
 .input-container label {
     font-size: 100%;
     position: absolute;
@@ -51,7 +51,7 @@ body {
     transition: all 0.3s ease;
     color: rgb(100, 100, 100);
 }
-  
+
 .input-container :is(input:focus, input:valid)~label {
     transform: translateY(-50%) scale(.9);
     margin: 0em;
@@ -59,7 +59,7 @@ body {
     padding: 0.4em;
     background-color: #fffdfd;
 }
-  
+
 .input-container :is(input:focus, input:valid) {
     border-color: rgb(150, 150, 200);
 }
@@ -69,7 +69,7 @@ body {
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    background-color: #b650ff;
+    background-color: #2211dc;
     color: #fff;
     border: none;
     border-radius: 5px;

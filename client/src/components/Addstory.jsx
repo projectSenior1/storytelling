@@ -1,32 +1,67 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { CloudinaryContext, Image } from 'cloudinary-react';
 
 const Addstory = ({ id }) => {
   const [title, setTitle] = useState("");
   const [story, setStory] = useState("");
   const [image, setImage] = useState("");
+  const [category, setCategory] = useState([]);
+  const [select, setSelect] = useState(0);
   const navigate = useNavigate();
 
-  const obj = {
-    title: title,
-    story: story,
-    image: image,
-    users_id: 2,
-    category_id: 2,
+  useEffect(() => {
+    axios.get(`http://localhost:5000/category/getAll`)
+      .then((res) => {
+        setCategory(res.data);
+        console.log("Categories:", res.data);
+      })
+      .catch((err) => {
+        console.log("Error fetching categories:", err);
+      });
+  }, []);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    console.log("Selected File:", file);
+    formData.append("file", file);
+    formData.append("upload_preset", "project");
+
+    axios.post("https://api.cloudinary.com/v1_1/ds3tmq5iw/image/upload", formData)
+      .then((res) => {
+        console.log("Upload successful:", res.data);
+        setImage(res.data.secure_url);
+      })
+      .catch((error) => {
+        console.error("Error uploading", error);
+      });
   };
 
   const add = () => {
-    axios
-      .post("http://localhost:5000/story/post", obj)
+    if (!title || !story) {
+      alert("You have to add a title and story");
+      return;
+    }
+
+    axios.post("http://localhost:5000/story/post", {
+      title: title,
+      story: story,
+      image: image,
+      users_id: id,
+      category_id: select,
+    })
       .then((res) => {
-        console.log("added");
+        console.log("Story added successfully:", res.data);
         navigate("/home");
       })
-      .catch(() => {
-        console.log("error");
+      .catch((err) => {
+        console.error("Error adding story:", err);
       });
+  };
+
+  const handleSelect = (e) => {
+    setSelect(e.target.value);
   };
 
   return (
@@ -46,9 +81,7 @@ const Addstory = ({ id }) => {
           <label htmlFor="newTitle">Title:</label>
           <input
             className="t"
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
+            onChange={(e) => setTitle(e.target.value)}
             type="text"
             id="newTitle"
           />
@@ -57,9 +90,7 @@ const Addstory = ({ id }) => {
           <label htmlFor="newStory">Story:</label>
           <textarea
             className="s"
-            onChange={(e) => {
-              setStory(e.target.value);
-            }}
+            onChange={(e) => setStory(e.target.value)}
             id="newStory"
           />
         </div>
@@ -67,14 +98,20 @@ const Addstory = ({ id }) => {
           <label htmlFor="newImageUrl">Image:</label>
           <input
             className="im"
-            onChange={(e) => {
-              setImage(e.target.value);
-            }}
-            id="newImageUrl"
-            placeholder="Optional"
+            type="file"
+            onChange={handleImageChange}
+         
           />
         </div>
-        <div className="okk" onClick={() => { add(); }}>
+        <div>
+          <select onChange={handleSelect}>
+            <option value="all">All Categories</option>
+            {category.map((el, i) => (
+              <option value={el.id} key={i}>{el.name}</option>
+            ))}
+          </select>
+        </div>
+        <div className="okk" onClick={add}>
           Post Now
         </div>
       </div>
